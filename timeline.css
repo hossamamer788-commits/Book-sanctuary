@@ -1,0 +1,46 @@
+/* ===================================
+   الخط الزمني
+   =================================== */
+
+.timeline-container {
+    background-color: var(--bg-secondary);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.timeline-view {
+    width: 100%;
+    height: 300px;
+    background-color: var(--bg-primary);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.timeline-view canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.timeline-events {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.timeline-event {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--bg-primary);
+    border-radius: 0.5rem;
+    border-right: 4px solid var(--coffee-primary);
+}
+
+.timeline-event-date {
+    min-width: 120px;
+    color: var(--coffee-primary);
+    font-weight: 600;
+}

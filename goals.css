@@ -1,0 +1,59 @@
+/* ===================================
+   الأهداف
+   =================================== */
+
+.goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.goal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-secondary);
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.goal-info h4 {
+    color: var(--coffee-primary);
+    margin-bottom: 0.25rem;
+}
+
+.goal-info p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.goal-progress-bar {
+    width: 200px;
+}
+
+.goals-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.goal-stat {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+}
+
+.goal-stat h4 {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.goal-stat p {
+    color: var(--coffee-primary);
+    font-size: 2rem;
+    font-weight: 700;
+}

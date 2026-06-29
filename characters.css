@@ -1,0 +1,130 @@
+/* ===================================
+   الشخصيات
+   =================================== */
+
+.characters-filters,
+.projects-filters,
+.places-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.search-input,
+.filter-select {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: var(--font-interface);
+    font-size: 1rem;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 250px;
+}
+
+.characters-container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+}
+
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.character-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.character-card:hover {
+    border-color: var(--coffee-primary);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transform: translateY(-2px);
+}
+
+.character-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--coffee-primary), var(--coffee-secondary));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.character-card h4 {
+    color: var(--coffee-primary);
+    margin-bottom: 0.25rem;
+}
+
+.character-card p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.character-detail {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-content {
+    line-height: 1.8;
+}
+
+.detail-content h4 {
+    color: var(--coffee-primary);
+    margin: 1rem 0 0.5rem;
+}
+
+.relationships-section {
+    margin-top: 2rem;
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+
+.relationships-canvas-container {
+    width: 100%;
+    height: 400px;
+    background-color: var(--bg-primary);
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.relationships-canvas-container canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.relationships-controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}

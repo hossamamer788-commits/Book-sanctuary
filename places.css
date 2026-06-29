@@ -1,0 +1,64 @@
+/* ===================================
+   الأماكن
+   =================================== */
+
+.world-building-tabs,
+.goals-tabs,
+.settings-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    border-radius: 0.5rem;
+    font-family: var(--font-interface);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.tab-btn.active {
+    background-color: var(--coffee-primary);
+    color: white;
+}
+
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.place-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.place-card:hover {
+    border-color: var(--coffee-primary);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.place-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--coffee-accent);
+    color: white;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}

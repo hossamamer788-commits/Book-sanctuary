@@ -1,0 +1,135 @@
+/* ===================================
+   الملاحظات
+   =================================== */
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.note-card {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.note-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.note-card[data-color="default"] {
+    background-color: var(--bg-secondary);
+}
+
+.note-card[data-color="yellow"] {
+    background-color: #FFF9C4;
+}
+
+.note-card[data-color="green"] {
+    background-color: #C8E6C9;
+}
+
+.note-card[data-color="blue"] {
+    background-color: #BBDEFB;
+}
+
+.note-card[data-color="pink"] {
+    background-color: #F8BBD0;
+}
+
+.note-card h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.note-card p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.note-editor {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+
+.note-title-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-interface);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.note-colors {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.color-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.color-btn[data-color="default"] {
+    background-color: var(--bg-secondary);
+}
+
+.color-btn[data-color="yellow"] {
+    background-color: #FFF9C4;
+}
+
+.color-btn[data-color="green"] {
+    background-color: #C8E6C9;
+}
+
+.color-btn[data-color="blue"] {
+    background-color: #BBDEFB;
+}
+
+.color-btn[data-color="pink"] {
+    background-color: #F8BBD0;
+}
+
+.color-btn.active {
+    border-color: var(--coffee-primary);
+    transform: scale(1.1);
+}
+
+.note-content {
+    width: 100%;
+    min-height: 300px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-interface);
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.note-actions {
+    display: flex;
+    gap: 0.5rem;
+}

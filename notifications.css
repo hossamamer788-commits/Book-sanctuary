@@ -1,0 +1,48 @@
+/* ===================================
+   الإشعارات
+   =================================== */
+
+.notifications-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 1001;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-secondary);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    animation: notificationSlideIn var(--transition-normal);
+    border-right: 4px solid var(--info);
+}
+
+.notification.success {
+    border-right-color: var(--success);
+}
+
+.notification.error {
+    border-right-color: var(--error);
+}
+
+.notification.warning {
+    border-right-color: var(--warning);
+}
+
+@keyframes notificationSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
