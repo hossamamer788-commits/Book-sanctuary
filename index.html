@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="منصة مخطوطة - منصة كتابة إبداعية شاملة للكتّاب والمؤلفين">
+    <title>مخطوطة | منصة الكتابة الإبداعية</title>
+    
+    <!-- الخطوط العربية والإنجليزية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+<!-- الأنماط -->
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/splash.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/editor.css">
+<link rel="stylesheet" href="css/characters.css">
+<link rel="stylesheet" href="css/places.css">
+<link rel="stylesheet" href="css/plots.css">
+<link rel="stylesheet" href="css/timeline.css">
+<link rel="stylesheet" href="css/notes.css">
+<link rel="stylesheet" href="css/goals.css">
+<link rel="stylesheet" href="css/statistics.css">
+<link rel="stylesheet" href="css/settings.css">
+<link rel="stylesheet" href="css/ai.css">
+<link rel="stylesheet" href="css/modals.css">
+<link rel="stylesheet" href="css/notifications.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="theme-coffee">
+    <!-- شاشة البداية -->
+    <div id="splash-screen" class="splash-screen">
+        <canvas id="splash-canvas"></canvas>
+        <div class="splash-content">
+            <div class="splash-logo">
+                <i class="fas fa-feather-alt"></i>
+            </div>
+            <h1 class="splash-title">مخطوطة</h1>
+            <p class="splash-subtitle">منصتك للكتابة الإبداعية</p>
+            <div class="splash-loader">
+                <div class="coffee-cup">
+                    <div class="steam"></div>
+                    <div class="steam"></div>
+                    <div class="steam"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- التطبيق الرئيسي -->
+    <div id="app" class="app-container hidden">
+        <!-- الشريط العلوي -->
+        <header class="top-bar" role="banner">
+            <div class="top-bar-right">
+                <button class="menu-toggle" id="menu-toggle" aria-label="القائمة">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>مخطوطة</span>
+                </div>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box" role="search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="global-search" placeholder="بحث شامل (Ctrl+K)" aria-label="بحث شامل">
+                    <kbd>Ctrl+K</kbd>
+                </div>
+            </div>
+            
+            <div class="top-bar-left">
+                <button class="icon-btn" id="theme-toggle" aria-label="تغيير الثيم">
+                    <i class="fas fa-palette"></i>
+                </button>
+                <button class="icon-btn" id="mode-toggle" aria-label="الوضع الليلي/النهاري">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-menu">
+                    <button class="user-btn" aria-label="قائمة المستخدم">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- القائمة الجانبية -->
+        <aside class="sidebar" id="sidebar" role="navigation" aria-label="القائمة الجانبية">
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <button class="nav-btn active" data-section="dashboard">
+                            <i class="fas fa-home"></i>
+                            <span>لوحة التحكم</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="projects">
+                            <i class="fas fa-folder-open"></i>
+                            <span>المشاريع</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="editor">
+                            <i class="fas fa-pen-fancy"></i>
+                            <span>المحرر</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="characters">
+                            <i class="fas fa-users"></i>
+                            <span>الشخصيات</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="places">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>الأماكن</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="plots">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>الحبكات</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="timeline">
+                            <i class="fas fa-history"></i>
+                            <span>الخط الزمني</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="notes">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>الملاحظات</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="goals">
+                            <i class="fas fa-bullseye"></i>
+                            <span>الأهداف</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="statistics">
+                            <i class="fas fa-chart-line"></i>
+                            <span>الإحصائيات</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>الإعدادات</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="nav-btn" id="ai-assistant-btn">
+                    <i class="fas fa-robot"></i>
+                    <span>المساعد الذكي</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content" id="main-content" role="main">
+            <!-- لوحة التحكم -->
+            <section id="dashboard-section" class="section active">
+                <div class="section-header">
+                    <h2>لوحة التحكم</h2>
+                    <button class="btn btn-primary" id="new-project-btn">
+                        <i class="fas fa-plus"></i>
+                        مشروع جديد
+                    </button>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <!-- الإحصائيات السريعة -->
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="total-projects">0</h3>
+                                <p>المشاريع</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="total-words">0</h3>
+                                <p>الكلمات</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="total-characters">0</h3>
+                                <p>الشخصيات</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="total-places">0</h3>
+                                <p>الأماكن</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- المشاريع الأخيرة -->
+                    <div class="recent-projects">
+                        <h3>المشاريع الأخيرة</h3>
+                        <div id="recent-projects-list" class="projects-grid"></div>
+                    </div>
+                    
+                    <!-- الأهداف اليومية -->
+                    <div class="daily-goals">
+                        <h3>الأهداف اليومية</h3>
+                        <div class="goal-progress">
+                            <div class="progress-header">
+                                <span>كلمات اليوم</span>
+                                <span id="daily-words-count">0 / 1000</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="daily-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- آخر الكتابة -->
+                    <div class="recent-writing">
+                        <h3>آخر الكتابة</h3>
+                        <div id="recent-writing-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم المشاريع -->
+            <section id="projects-section" class="section">
+                <div class="section-header">
+                    <h2>المشاريع</h2>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="create-project-btn">
+                            <i class="fas fa-plus"></i>
+                            مشروع جديد
+                        </button>
+                        <!-- إضافة زر تصدير المشروع الحالي -->
+                        <button class="btn btn-secondary" id="export-project-btn">
+                            <i class="fas fa-download"></i>
+                            تصدير المشروع الحالي
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="projects-filters">
+                    <input type="text" id="projects-search" placeholder="بحث في المشاريع..." class="search-input">
+                    <select id="projects-filter" class="filter-select">
+                        <option value="all">الكل</option>
+                        <option value="draft">مسودة</option>
+                        <option value="writing">قيد الكتابة</option>
+                        <option value="completed">مكتمل</option>
+                        <option value="archived">مؤرشف</option>
+                    </select>
+                    <select id="projects-sort" class="filter-select">
+                        <option value="date">حسب التاريخ</option>
+                        <option value="name">حسب الاسم</option>
+                        <option value="words">حسب عدد الكلمات</option>
+                    </select>
+                </div>
+                
+                <div id="projects-list" class="projects-grid"></div>
+            </section>
+
+            <!-- قسم المحرر -->
+            <section id="editor-section" class="section">
+                <div class="editor-container">
+                    <!-- شريط أدوات المحرر -->
+                    <div class="editor-toolbar" role="toolbar" aria-label="شريط أدوات التحرير">
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-command="bold" aria-label="غامق">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button class="toolbar-btn" data-command="italic" aria-label="مائل">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button class="toolbar-btn" data-command="underline" aria-label="تسطير">
+                                <i class="fas fa-underline"></i>
+                            </button>
+                            <button class="toolbar-btn" data-command="strikeThrough" aria-label="يتوسطه خط">
+                                <i class="fas fa-strikethrough"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="toolbar-divider"></div>
+                        
+                        <div class="toolbar-group">
+                            <select id="heading-select" class="toolbar-select" aria-label="نوع العنوان">
+                                <option value="p">نص عادي</option>
+                                <option value="h1">عنوان 1</option>
+                                <option value="h2">عنوان 2</option>
+                                <option value="h3">عنوان 3</option>
+                                <option value="h4">عنوان 4</option>
+                            </select>
+                        </div>
+                        
+                        <div class="toolbar-divider"></div>
+                        
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-command="justifyRight" aria-label="محاذاة لليمين">
+                                <i class="fas fa-align-right"></i>
+                            </button>
+                            <button class="toolbar-btn" data-command="justifyCenter" aria-label="توسيط">
+                                <i class="fas fa-align-center"></i>
+                            </button>
+                            <button class="toolbar-btn" data-command="justifyLeft" aria-label="محاذاة لليسار">
+                                <i class="fas fa-align-left"></i>
+                            </button>
+                            <button class="toolbar-btn" data-command="justifyFull" aria-label="ضبط">
+                                <i class="fas fa-align-justify"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="toolbar-divider"></div>
+                        
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-command="insertUnorderedList" aria-label="قائمة نقطية">
+                                <i class="fas fa-list-ul"></i>
+                            </button>
+                            <button class="toolbar-btn" data-command="insertOrderedList" aria-label="قائمة رقمية">
+                                <i class="fas fa-list-ol"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="toolbar-divider"></div>
+                        
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" id="undo-btn" aria-label="تراجع">
+                                <i class="fas fa-undo"></i>
+                            </button>
+                            <button class="toolbar-btn" id="redo-btn" aria-label="إعادة">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="toolbar-divider"></div>
+
+                        <!-- إضافة أزرار إدراج صورة ورابط -->
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" id="insert-image-btn" aria-label="إدراج صورة">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <button class="toolbar-btn" id="insert-link-btn" aria-label="إدراج رابط">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="toolbar-divider"></div>
+                        
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" id="find-replace-btn" aria-label="بحث واستبدال">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="toolbar-divider"></div>
+                        
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" id="focus-mode-btn" aria-label="وضع التركيز">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                            <select id="view-mode-select" class="toolbar-select" aria-label="وضع العرض">
+                                <option value="page">وضع الصفحة</option>
+                                <option value="wide">وضع عريض</option>
+                            </select>
+                        </div>
+                        
+                        <div class="toolbar-spacer"></div>
+                        
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" id="export-pdf-btn" aria-label="تصدير PDF">
+                                <i class="fas fa-file-pdf"></i>
+                            </button>
+                            <button class="toolbar-btn" id="export-txt-btn" aria-label="تصدير TXT">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- منطقة البحث والاستبدال -->
+                    <div class="find-replace-panel hidden" id="find-replace-panel">
+                        <div class="find-replace-row">
+                            <input type="text" id="find-input" placeholder="بحث عن..." class="find-input">
+                            <input type="text" id="replace-input" placeholder="استبدال بـ..." class="replace-input">
+                            <button class="btn btn-sm" id="find-next-btn">التالي</button>
+                            <button class="btn btn-sm" id="find-prev-btn">السابق</button>
+                            <button class="btn btn-sm" id="replace-btn">استبدال</button>
+                            <button class="btn btn-sm" id="replace-all-btn">استبدال الكل</button>
+                            <button class="btn btn-sm btn-icon" id="close-find-replace">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- محتوى المحرر -->
+                    <div class="editor-content-wrapper">
+                        <div class="editor-page" id="editor-page">
+                            <div class="chapter-header">
+                                <input type="text" id="chapter-title" class="chapter-title-input" placeholder="عنوان الفصل">
+                                <div class="chapter-meta">
+                                    <span id="chapter-words">0 كلمة</span>
+                                    <span id="chapter-time">00:00</span>
+                                </div>
+                            </div>
+                            <div id="editor" class="editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="محرر النص"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- شريط الحالة -->
+                    <div class="status-bar" role="status">
+                        <div class="status-left">
+                            <span id="word-count">كلمات: 0</span>
+                            <span id="char-count">أحرف: 0</span>
+                            <span id="page-count">صفحات: 0</span>
+                        </div>
+                        <div class="status-center">
+                            <span id="save-status" class="save-status">
+                                <i class="fas fa-check"></i>
+                                محفوظ
+                            </span>
+                        </div>
+                        <div class="status-right">
+                            <span id="session-time">الجلسة: 00:00</span>
+                            <span id="writing-speed">السرعة: 0 كلمة/دقيقة</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- قائمة الفصول الجانبية -->
+                <div class="chapters-sidebar" id="chapters-sidebar">
+                    <div class="chapters-header">
+                        <h3>الفصول</h3>
+                        <button class="btn btn-sm btn-icon" id="add-chapter-btn" aria-label="إضافة فصل">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <!-- إضافة حقل بحث عن الفصول -->
+                    <input type="text" id="chapter-search" placeholder="بحث في الفصول..." class="search-input" style="margin-bottom: 0.5rem;">
+                    <div id="chapters-list" class="chapters-list"></div>
+                </div>
+            </section>
+
+            <!-- قسم الشخصيات -->
+            <section id="characters-section" class="section">
+                <div class="section-header">
+                    <h2>الشخصيات</h2>
+                    <button class="btn btn-primary" id="add-character-btn">
+                        <i class="fas fa-plus"></i>
+                        شخصية جديدة
+                    </button>
+                </div>
+                
+                <div class="characters-filters">
+                    <input type="text" id="characters-search" placeholder="بحث في الشخصيات..." class="search-input">
+                    <select id="characters-filter" class="filter-select">
+                        <option value="all">الكل</option>
+                        <option value="main">رئيسية</option>
+                        <option value="secondary">ثانوية</option>
+                        <option value="minor">ثانوية جداً</option>
+                    </select>
+                    <select id="characters-sort" class="filter-select">
+                        <option value="name">حسب الاسم</option>
+                        <option value="role">حسب الدور</option>
+                        <option value="created">حسب التاريخ</option>
+                    </select>
+                </div>
+                
+                <div class="characters-container">
+                    <div id="characters-list" class="characters-grid"></div>
+                    <div id="character-detail" class="character-detail hidden">
+                        <div class="detail-header">
+                            <button class="btn btn-icon" id="back-to-characters">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <h3 id="character-detail-name"></h3>
+                            <div class="detail-actions">
+                                <button class="btn btn-sm" id="edit-character-btn">
+                                    <i class="fas fa-edit"></i>
+                                    تعديل
+                                </button>
+                                <button class="btn btn-sm btn-danger" id="delete-character-btn">
+                                    <i class="fas fa-trash"></i>
+                                    حذف
+                                </button>
+                            </div>
+                        </div>
+                        <div class="detail-content" id="character-detail-content"></div>
+                    </div>
+                </div>
+                
+                <!-- شبكة العلاقات -->
+                <div class="relationships-section">
+                    <h3>شبكة العلاقات</h3>
+                    <div class="relationships-canvas-container">
+                        <canvas id="relationships-canvas"></canvas>
+                    </div>
+                    <div class="relationships-controls">
+                        <button class="btn btn-sm" id="add-relationship-btn">
+                            <i class="fas fa-link"></i>
+                            إضافة علاقة
+                        </button>
+                        <button class="btn btn-sm" id="zoom-in-relationships">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="btn btn-sm" id="zoom-out-relationships">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم الأماكن -->
+            <section id="places-section" class="section">
+                <div class="section-header">
+                    <h2>الأماكن وبناء العالم</h2>
+                    <button class="btn btn-primary" id="add-place-btn">
+                        <i class="fas fa-plus"></i>
+                        مكان جديد
+                    </button>
+                </div>
+                
+                <div class="world-building-tabs">
+                    <button class="tab-btn active" data-tab="places-list">الأماكن</button>
+                    <button class="tab-btn" data-tab="world-hierarchy">تسلسل العالم</button>
+                    <button class="tab-btn" data-tab="world-entities">الكيانات</button>
+                </div>
+                
+                <div id="places-list" class="places-grid"></div>
+                <div id="place-detail" class="place-detail hidden"></div>
+            </section>
+
+            <!-- قسم الحبكات -->
+            <section id="plots-section" class="section">
+                <div class="section-header">
+                    <h2>الحبكات</h2>
+                    <button class="btn btn-primary" id="add-plot-btn">
+                        <i class="fas fa-plus"></i>
+                        حبكة جديدة
+                    </button>
+                </div>
+                
+                <div class="plots-container">
+                    <div id="plots-list" class="plots-list"></div>
+                    <div id="plot-detail" class="plot-detail hidden"></div>
+                </div>
+            </section>
+
+            <!-- قسم الخط الزمني -->
+            <section id="timeline-section" class="section">
+                <div class="section-header">
+                    <h2>الخط الزمني</h2>
+                    <button class="btn btn-primary" id="add-timeline-event-btn">
+                        <i class="fas fa-plus"></i>
+                        حدث جديد
+                    </button>
+                </div>
+                
+                <div class="timeline-container">
+                    <div id="timeline-view" class="timeline-view">
+                        <canvas id="timeline-canvas"></canvas>
+                    </div>
+                    <div id="timeline-events" class="timeline-events"></div>
+                </div>
+            </section>
+
+            <!-- قسم الملاحظات -->
+            <section id="notes-section" class="section">
+                <div class="section-header">
+                    <h2>الملاحظات</h2>
+                    <button class="btn btn-primary" id="add-note-btn">
+                        <i class="fas fa-plus"></i>
+                        ملاحظة جديدة
+                    </button>
+                </div>
+                
+                <div class="notes-container">
+                    <div id="notes-list" class="notes-grid"></div>
+                    <div id="note-editor" class="note-editor hidden">
+                        <input type="text" id="note-title" placeholder="عنوان الملاحظة" class="note-title-input">
+                        <div class="note-colors">
+                            <button class="color-btn active" data-color="default"></button>
+                            <button class="color-btn" data-color="yellow"></button>
+                            <button class="color-btn" data-color="green"></button>
+                            <button class="color-btn" data-color="blue"></button>
+                            <button class="color-btn" data-color="pink"></button>
+                        </div>
+                        <textarea id="note-content" placeholder="محتوى الملاحظة..." class="note-content"></textarea>
+                        <div class="note-actions">
+                            <button class="btn btn-primary" id="save-note-btn">حفظ</button>
+                            <button class="btn" id="cancel-note-btn">إلغاء</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم الأهداف -->
+            <section id="goals-section" class="section">
+                <div class="section-header">
+                    <h2>الأهداف</h2>
+                    <button class="btn btn-primary" id="add-goal-btn">
+                        <i class="fas fa-plus"></i>
+                        هدف جديد
+                    </button>
+                </div>
+                
+                <div class="goals-container">
+                    <div class="goals-tabs">
+                        <button class="tab-btn active" data-period="daily">يومي</button>
+                        <button class="tab-btn" data-period="weekly">أسبوعي</button>
+                        <button class="tab-btn" data-period="monthly">شهري</button>
+                    </div>
+                    
+                    <div id="goals-list" class="goals-list"></div>
+                    
+                    <div class="goals-stats">
+                        <div class="goal-stat">
+                            <h4>متوسط الكلمات اليومية</h4>
+                            <p id="avg-daily-words">0</p>
+                        </div>
+                        <div class="goal-stat">
+                            <h4>أيام الالتزام</h4>
+                            <p id="streak-days">0</p>
+                        </div>
+                        <div class="goal-stat">
+                            <h4>نسبة الإنجاز</h4>
+                            <p id="goals-completion">0%</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم الإحصائيات -->
+            <section id="statistics-section" class="section">
+                <div class="section-header">
+                    <h2>الإحصائيات</h2>
+                </div>
+                
+                <div class="statistics-container">
+                    <div class="stats-overview">
+                        <div class="stat-box">
+                            <h3>إجمالي الكلمات</h3>
+                            <p id="stats-total-words">0</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>إجمالي الصفحات</h3>
+                            <p id="stats-total-pages">0</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>وقت الكتابة الكلي</h3>
+                            <p id="stats-total-time">0 ساعة</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>متوسط السرعة</h3>
+                            <p id="stats-avg-speed">0 كلمة/دقيقة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="charts-container">
+                        <div class="chart-box">
+                            <h3>الإنتاج اليومي</h3>
+                            <canvas id="daily-chart"></canvas>
+                        </div>
+                        <div class="chart-box">
+                            <h3>الإنتاج الأسبوعي</h3>
+                            <canvas id="weekly-chart"></canvas>
+                        </div>
+                        <div class="chart-box">
+                            <h3>توزيع أنواع المحتوى</h3>
+                            <canvas id="distribution-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم الإعدادات -->
+            <section id="settings-section" class="section">
+                <div class="section-header">
+                    <h2>الإعدادات</h2>
+                </div>
+                
+                <div class="settings-container">
+                    <div class="settings-tabs">
+                        <button class="tab-btn active" data-tab="appearance">المظهر</button>
+                        <button class="tab-btn" data-tab="editor">المحرر</button>
+                        <button class="tab-btn" data-tab="data">البيانات</button>
+                        <button class="tab-btn" data-tab="accessibility">إمكانية الوصول</button>
+                    </div>
+                    
+                    <div id="appearance-settings" class="settings-tab active">
+                        <div class="setting-group">
+                            <h3>الثيم</h3>
+                            <div class="theme-options">
+                                <button class="theme-option active" data-theme="coffee">
+                                    <span class="theme-preview coffee"></span>
+                                    <span>قهوة</span>
+                                </button>
+                                <button class="theme-option" data-theme="paper">
+                                    <span class="theme-preview paper"></span>
+                                    <span>ورق</span>
+                                </button>
+                                <button class="theme-option" data-theme="forest">
+                                    <span class="theme-preview forest"></span>
+                                    <span>غابة</span>
+                                </button>
+                                <button class="theme-option" data-theme="ocean">
+                                    <span class="theme-preview ocean"></span>
+                                    <span>محيط</span>
+                                </button>
+                                <button class="theme-option" data-theme="midnight">
+                                    <span class="theme-preview midnight"></span>
+                                    <span>منتصف الليل</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <h3>الخطوط</h3>
+                            <div class="font-options">
+                                <label>خط الواجهة:</label>
+                                <select id="interface-font">
+                                    <option value="cairo">Cairo</option>
+                                    <option value="ibm-plex">IBM Plex Sans Arabic</option>
+                                    <option value="noto-sans">Noto Sans Arabic</option>
+                                    <option value="noto-naskh">Noto Naskh Arabic</option>
+                                    <option value="amiri">Amiri</option>
+                                </select>
+                                
+                                <label>خط المحرر:</label>
+                                <select id="editor-font">
+                                    <option value="cairo">Cairo</option>
+                                    <option value="ibm-plex">IBM Plex Sans Arabic</option>
+                                    <option value="noto-sans">Noto Sans Arabic</option>
+                                    <option value="noto-naskh">Noto Naskh Arabic</option>
+                                    <option value="amiri">Amiri</option>
+                                    <option value="merriweather">Merriweather</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <h3>حجم الخط</h3>
+                            <input type="range" id="font-size-slider" min="12" max="24" value="16">
+                            <span id="font-size-value">16px</span>
+                        </div>
+                    </div>
+                    
+                    <div id="editor-settings" class="settings-tab">
+                        <div class="setting-group">
+                            <h3>عرض المحرر</h3>
+                            <input type="range" id="editor-width-slider" min="600" max="1200" value="800">
+                            <span id="editor-width-value">800px</span>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <h3>الحفظ التلقائي</h3>
+                            <label class="toggle-label">
+                                <input type="checkbox" id="auto-save-toggle" checked>
+                                <span class="toggle-slider"></span>
+                                <span>تفعيل الحفظ التلقائي</span>
+                            </label>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <h3>فاصل الحفظ التلقائي (ثواني)</h3>
+                            <input type="number" id="auto-save-interval" value="30" min="10" max="300">
+                        </div>
+                    </div>
+                    
+                    <div id="data-settings" class="settings-tab">
+                        <div class="setting-group">
+                            <h3>تصدير البيانات</h3>
+                            <button class="btn" id="export-data-btn">
+                                <i class="fas fa-download"></i>
+                                تصدير جميع البيانات (JSON)
+                            </button>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <h3>استيراد البيانات</h3>
+                            <input type="file" id="import-file" accept=".json" class="file-input">
+                            <button class="btn" id="import-data-btn">
+                                <i class="fas fa-upload"></i>
+                                استيراد
+                            </button>
+                        </div>
+
+                        <!-- إضافة استيراد مشروع فردي -->
+                        <div class="setting-group">
+                            <h3>استيراد مشروع (JSON)</h3>
+                            <input type="file" id="import-project-file" accept=".json" class="file-input" style="display: none;">
+                            <button class="btn btn-secondary" id="import-project-btn">
+                                <i class="fas fa-upload"></i>
+                                استيراد مشروع
+                            </button>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <h3>مسح البيانات</h3>
+                            <button class="btn btn-danger" id="clear-data-btn">
+                                <i class="fas fa-trash"></i>
+                                مسح جميع البيانات
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="accessibility-settings" class="settings-tab">
+                        <div class="setting-group">
+                            <h3>التباين العالي</h3>
+                            <label class="toggle-label">
+                                <input type="checkbox" id="high-contrast-toggle">
+                                <span class="toggle-slider"></span>
+                                <span>تفعيل التباين العالي</span>
+                            </label>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <h3>تقليل الحركة</h3>
+                            <label class="toggle-label">
+                                <input type="checkbox" id="reduced-motion-toggle">
+                                <span class="toggle-slider"></span>
+                                <span>تقليل الحركات والتأثيرات</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- لوحة المساعد الذكي -->
+        <aside class="ai-assistant-panel hidden" id="ai-assistant-panel">
+            <div class="ai-panel-header">
+                <h3>المساعد الذكي</h3>
+                <button class="btn btn-icon" id="close-ai-panel">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ai-chat-container">
+                <div id="ai-messages" class="ai-messages"></div>
+                <div class="ai-input-container">
+                    <textarea id="ai-input" placeholder="اسأل المساعد الذكي..." rows="3"></textarea>
+                    <button class="btn btn-primary" id="send-ai-message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="ai-suggestions">
+                <h4>اقتراحات سريعة:</h4>
+                <div class="suggestion-chips">
+                    <button class="chip" data-suggestion="develop-character">تطوير شخصية</button>
+                    <button class="chip" data-suggestion="plot-idea">فكرة حبكة</button>
+                    <button class="chip" data-suggestion="world-building">بناء عالم</button>
+                    <button class="chip" data-suggestion="writing-prompt">محفز كتابة</button>
+                    <button class="chip" data-suggestion="improve-style">تحسين الأسلوب</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- نافذة إنشاء/تعديل مشروع -->
+        <div class="modal hidden" id="project-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="project-modal-title">مشروع جديد</h3>
+                    <button class="btn btn-icon modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="project-form" class="modal-form">
+                    <div class="form-group">
+                        <label for="project-name">اسم المشروع</label>
+                        <input type="text" id="project-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="project-genre">النوع الأدبي</label>
+                        <select id="project-genre">
+                            <option value="novel">رواية</option>
+                            <option value="story">قصة قصيرة</option>
+                            <option value="script">سيناريو</option>
+                            <option value="nonfiction">غير خيالي</option>
+                            <option value="poetry">شعر</option>
+                            <option value="other">آخر</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="project-description">الوصف</label>
+                        <textarea id="project-description" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="project-language">اللغة</label>
+                        <select id="project-language">
+                            <option value="ar">العربية</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="project-status">الحالة</label>
+                        <select id="project-status">
+                            <option value="draft">مسودة</option>
+                            <option value="writing">قيد الكتابة</option>
+                            <option value="completed">مكتمل</option>
+                        </select>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">حفظ</button>
+                        <button type="button" class="btn modal-close">إلغاء</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- نافذة إنشاء/تعديل شخصية -->
+        <div class="modal hidden" id="character-modal">
+            <div class="modal-content modal-large">
+                <div class="modal-header">
+                    <h3 id="character-modal-title">شخصية جديدة</h3>
+                    <button class="btn btn-icon modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="character-form" class="modal-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="char-name">الاسم</label>
+                            <input type="text" id="char-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="char-nickname">اللقب</label>
+                            <input type="text" id="char-nickname">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="char-age">العمر</label>
+                            <input type="number" id="char-age">
+                        </div>
+                        <div class="form-group">
+                            <label for="char-gender">الجنس</label>
+                            <select id="char-gender">
+                                <option value="male">ذكر</option>
+                                <option value="female">أنثى</option>
+                                <option value="other">آخر</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="char-role">الدور</label>
+                            <select id="char-role">
+                                <option value="main">رئيسي</option>
+                                <option value="secondary">ثانوي</option>
+                                <option value="minor">ثانوي جداً</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="char-description">الوصف</label>
+                        <textarea id="char-description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="char-personality">الشخصية</label>
+                        <textarea id="char-personality" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="char-background">الخلفية</label>
+                        <textarea id="char-background" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="char-motivation">الدوافع والأهداف</label>
+                        <textarea id="char-motivation" rows="3"></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">حفظ</button>
+                        <button type="button" class="btn modal-close">إلغاء</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- الإشعارات -->
+        <div class="notifications-container" id="notifications-container"></div>
+    </div>
+
+    <!-- السكريبتات -->
+    <script src="js/state.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/chapters.js"></script>
+    <script src="js/characters.js"></script>
+    <script src="js/notes.js"></script>
+    <script src="js/goals.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/statistics.js"></script>
+    <script src="js/places.js"></script>
+    <script src="js/plots.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/relationships.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/splash.js"></script>
+</body>
+</html>
